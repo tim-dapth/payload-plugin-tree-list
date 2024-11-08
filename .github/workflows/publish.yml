@@ -1,0 +1,41 @@
+name: Deploy
+
+on:
+  release:
+    types: [published]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [20.x]
+
+    steps:
+      - name: Check out the code
+        uses: actions/checkout@v3
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: "yarn"
+
+      - name: Install Yarn 1.22.22
+        run: |
+          npm install --global yarn@1.22.22
+
+      - name: Install dependencies
+        run: yarn install
+
+      - name: Build the project
+        run: yarn build
+
+      - name: Log in to npm
+        uses: actions/configure-npm@v3
+        with:
+          npm-token: ${{ secrets.NPM_TOKEN }}
+
+      - name: Publish to npm
+        run: yarn publish --non-interactive --access public

@@ -1,0 +1,77 @@
+{
+  "name": "payload-plugin-tree-list",
+  "version": "0.0.1",
+  "type": "module",
+  "description": "A plugin for Payload CMS that adds a collapsible Tree list view.",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "license": "MIT",
+  "author": {
+    "name": "Italo Devoto Ramella",
+    "url": "https://italodr.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/italodr/payload-plugin-tree-list.git"
+  },
+  "files": [
+    "dist",
+    "package.json",
+    "README",
+    "LICENSE"
+  ],
+  "keywords": [
+    "payload",
+    "cms",
+    "plugin",
+    "tree-list",
+    "view",
+    "v3"
+  ],
+  "scripts": {
+    "build": "yarn clean && yarn build:swc && yarn copyfiles && yarn build:types",
+    "build:swc": "swc ./src -d ./dist --config-file .swcrc --strip-leading-paths",
+    "build:types": "tsc --emitDeclarationOnly --outDir dist",
+    "clean": "rm -rf dist",
+    "copyfiles": "copyfiles -u 1 \"src/**/*.{html,css,scss,ttf,woff,woff2,eot,svg,jpg,png,json}\" dist/",
+    "lint": "eslint src",
+    "lint:fix": "eslint --fix --ext .ts,.tsx src",
+    "prepublishOnly": "yarn clean && yarn build"
+  },
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    },
+    "./client": {
+      "import": "./dist/exports/client/index.js",
+      "types": "./dist/exports/client/index.d.ts",
+      "default": "./dist/exports/client/index.js"
+    }
+  },
+  "dependencies": {
+    "@payloadcms/ui": "beta",
+    "@radix-ui/react-collapsible": "1.1.1",
+    "next": "15.0.0-canary.104",
+    "payload": "beta",
+    "react": "rc"
+  },
+  "devDependencies": {
+    "@payloadcms/eslint-config": "1.1.1",
+    "@payloadcms/eslint-plugin": "3.0.0-beta.59",
+    "@swc/cli": "0.5.0",
+    "@swc/core": "1.9.1",
+    "@types/react": "npm:types-react@19.0.0-rc.0",
+    "@types/react-dom": "npm:types-react-dom@19.0.0-rc.0",
+    "copyfiles": "2.4.1",
+    "prettier": "3.3.3",
+    "typescript": "5.6.3"
+  },
+  "peerDependencies": {
+    "@payloadcms/next": "beta",
+    "next": "15.0.3",
+    "payload": "beta",
+    "react": "rc"
+  }
+}

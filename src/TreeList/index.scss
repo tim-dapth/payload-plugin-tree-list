@@ -1,0 +1,64 @@
+.cell-collapsible {
+  padding: 0;
+
+  &:has([data-state="open"]) {
+    border-top: 1px solid var(--theme-elevation-100);
+  }
+
+  &.first-child {
+    &:has([data-state="open"]) {
+      border-bottom: 1px solid var(--theme-elevation-100);
+    }
+
+    .table-collapsible {
+      border-left: 1px solid var(--theme-elevation-100);
+    }
+  }
+
+  &:has([data-state="open"]) {
+    padding: 0 0 0 2.5rem;
+  }
+}
+
+.table .table {
+  margin: 0;
+}
+
+.table-collapsible {
+  tr {
+    background: transparent;
+    border-radius: 0;
+
+    &.odd {
+      background: var(--theme-elevation-50);
+      border-radius: 3px;
+    }
+  }
+
+  &__trigger {
+    appearance: none;
+    align-items: center;
+    background-color: var(--theme-bg);
+    border: 0;
+    border-radius: 3px;
+    box-shadow: 0 0 0 1px var(--theme-elevation-150);
+    color: var(--theme-text);
+    cursor: pointer;
+    display: flex;
+    height: var(--base);
+    justify-content: center;
+    outline: none;
+    padding: 2px;
+    position: relative;
+    transition-duration: .1s;
+    transition-property: box-shadow, background-color;
+    transition-timing-function: cubic-bezier(0,.2,.2,1);
+    width: var(--base);
+    z-index: 1;
+
+    &:hover {
+      background-color: var(--theme-elevation-100);
+      box-shadow: 0 0 0 1px var(--theme-elevation-500);
+    }
+  }
+}
