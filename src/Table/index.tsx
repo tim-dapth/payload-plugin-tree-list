@@ -5,6 +5,8 @@ import { deepMergeSimple } from "@payloadcms/translations/utilities";
 import React, { useState } from "react";
 import * as Collapsible from "@radix-ui/react-collapsible";
 
+import { generateTreeList } from "../utils/generateTreeList.js";
+
 const baseClass = "table";
 
 export type Column = {
@@ -27,10 +29,11 @@ export const Table: React.FC<Props> = ({
   appearance,
   columns: columnsFromProps,
   customCellContext,
-  data,
+  data: incommingData,
   fields,
   isChildren = 0,
 }) => {
+  const data = generateTreeList(incommingData);
   const [openIndexes, setOpenIndexes] = useState<boolean[]>(Array(data.length).fill(false));
   const { columns: columnsFromContext } = useTableColumns();
   const columns = columnsFromProps || columnsFromContext;

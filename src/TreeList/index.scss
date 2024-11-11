@@ -18,6 +18,17 @@
   &:has([data-state="open"]) {
     padding: 0 0 0 2.5rem;
   }
+
+  &__toggle {
+    margin-bottom: var(--base);
+    text-align: right;
+  }
+
+  &__toggle-group {
+    align-items: center;
+    display: flex;
+    gap: 0.5rem;
+  }
 }
 
 .table .table {
@@ -35,7 +46,8 @@
     }
   }
 
-  &__trigger {
+  &__trigger,
+  &__toggle-group-item {
     appearance: none;
     align-items: center;
     background-color: var(--theme-bg);
@@ -59,6 +71,15 @@
     &:hover {
       background-color: var(--theme-elevation-100);
       box-shadow: 0 0 0 1px var(--theme-elevation-500);
+    }
+
+    &[data-state="on"] {
+      background-color: var(--theme-elevation-500);
+      box-shadow: 0 0 0 1px var(--theme-elevation-500);
+
+      &:hover {
+        background-color: var(--theme-elevation-500);
+      }
     }
   }
 }

@@ -53,6 +53,7 @@
   "dependencies": {
     "@payloadcms/ui": "beta",
     "@radix-ui/react-collapsible": "1.1.1",
+    "@radix-ui/react-toggle-group": "1.1.0",
     "next": "15.0.0-canary.104",
     "payload": "beta",
     "react": "rc"
