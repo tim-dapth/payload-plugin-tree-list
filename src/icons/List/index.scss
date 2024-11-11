@@ -1,0 +1,12 @@
+@import '@payloadcms/ui/scss';
+
+@layer payload-default {
+  .icon--list {
+    height: $baseline;
+    width: $baseline;
+
+    .stroke {
+      fill: currentColor;
+    }
+  }
+}
