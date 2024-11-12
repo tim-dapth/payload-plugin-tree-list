@@ -1,5 +1,5 @@
 "use client";
-import type { ClientCollectionConfig, PaginatedDocs } from "payload";
+import type { ClientCollectionConfig } from "payload";
 
 import { getTranslation } from "@payloadcms/translations";
 import {
@@ -18,6 +18,7 @@ import {
   SelectionProvider,
   SetViewActions,
   StaggeredShimmers,
+  Table as PayloadTable,
   UnpublishMany,
   useAuth,
   useConfig,
@@ -31,38 +32,21 @@ import {
 } from "@payloadcms/ui";
 import LinkImport from "next/link.js";
 import { isNumber } from "payload/shared";
-import { Fragment, useEffect } from "react";
+import { Fragment, useEffect, useMemo, useState } from "react";
+import * as ToggleGroup from "@radix-ui/react-toggle-group";
 
 import { Table } from "../Table/index.js";
+import { TreeListIcon } from "../icons/TreeList/index.js";
+import { ListIcon } from "../icons/List/index.js";
+import { generateTreeList } from "../utils/generateTreeList.js";
 
 import "./index.scss";
 
 const baseClass = "collection-list";
 const Link = (LinkImport.default || LinkImport) as unknown as typeof LinkImport.default;
 
-function generateTreeList(docs?: PaginatedDocs["docs"]) {
-  if (!docs || !docs.length) return [];
-  const docsById = docs.reduce((acc, doc) => {
-    acc[doc.id] = { ...doc, children: [] };
-    return acc;
-  }, {});
-
-  const childIds = new Set();
-  const rootDocs = [];
-
-  docs.forEach(doc => {
-    if (doc.parent === null) {
-      rootDocs.push(docsById[doc.id]);
-    } else {
-      docsById[doc.parent].children.push(docsById[doc.id]);
-      childIds.add(doc.id);
-    }
-  });
-
-  return rootDocs.filter(doc => !childIds.has(doc.id));
-}
-
 export function TreeList() {
+  const [view, setView] = useState<"list" | "tree">("tree");
   const { user } = useAuth();
   const {
     beforeActions,
@@ -105,7 +89,8 @@ export function TreeList() {
     breakpoints: { s: smallBreak },
   } = useWindowInfo();
 
-  let docs = generateTreeList(data.docs);
+  const docs = data.docs;
+  const treeDocs = useMemo(() => generateTreeList(docs), [docs]);
 
   useEffect(() => {
     if (drawerDepth <= 1) {
@@ -153,22 +138,58 @@ export function TreeList() {
           )}
           <ListControls collectionConfig={collectionConfig} fields={fields} />
           <RenderComponent mappedComponent={beforeListTable} />
+          <div className={`${baseClass}__toggle`}>
+            <ToggleGroup.Root
+              className={`${baseClass}__toggle-group`}
+              type="single"
+              defaultValue="tree"
+              onValueChange={value => setView(value as "list" | "tree")}
+              aria-label="Toggle between list and tree view"
+            >
+              <ToggleGroup.Item
+                className={`${baseClass}__toggle-group-item`}
+                value="list"
+                aria-label="List view"
+              >
+                <ListIcon />
+              </ToggleGroup.Item>
+              <ToggleGroup.Item
+                className={`${baseClass}__toggle-group-item`}
+                value="tree"
+                aria-label="Tree view"
+              >
+                <TreeListIcon />
+              </ToggleGroup.Item>
+            </ToggleGroup.Root>
+          </div>
           {!data.docs && (
             <StaggeredShimmers
               className={[`${baseClass}__shimmer`, `${baseClass}__shimmer--rows`].join(" ")}
               count={6}
             />
           )}
+
           {data.docs && data.docs.length > 0 && (
             <RelationshipProvider>
-              <Table
-                customCellContext={{
-                  collectionSlug,
-                  uploadConfig: collectionConfig.upload,
-                }}
-                data={docs}
-                fields={fields}
-              />
+              {view === "tree" ? (
+                <Table
+                  customCellContext={{
+                    collectionSlug,
+                    uploadConfig: collectionConfig.upload,
+                  }}
+                  data={treeDocs}
+                  fields={fields}
+                />
+              ) : (
+                <PayloadTable
+                  customCellContext={{
+                    collectionSlug,
+                    uploadConfig: collectionConfig.upload,
+                  }}
+                  data={docs}
+                  fields={fields}
+                />
+              )}
             </RelationshipProvider>
           )}
           {data.docs && data.docs.length === 0 && (
