@@ -1,24 +1,42 @@
-.cell-collapsible {
-  padding: 0;
+$gap: 4px;
 
-  &:has([data-state="open"]) {
-    border-top: 1px solid var(--theme-elevation-100);
+%icon-button {
+  appearance: none;
+  align-items: center;
+  background-color: var(--theme-bg);
+  border: 0;
+  border-radius: 3px;
+  box-shadow: 0 0 0 1px var(--theme-elevation-150);
+  color: var(--theme-text);
+  cursor: pointer;
+  display: flex;
+  height: var(--base);
+  justify-content: center;
+  outline: none;
+  padding: 2px;
+  position: relative;
+  transition-duration: .1s;
+  transition-property: box-shadow, background-color;
+  transition-timing-function: cubic-bezier(0,.2,.2,1);
+  width: var(--base);
+  z-index: 1;
+
+  &:hover {
+    background-color: var(--theme-elevation-100);
+    box-shadow: 0 0 0 1px var(--theme-elevation-500);
   }
 
-  &.first-child {
-    &:has([data-state="open"]) {
-      border-bottom: 1px solid var(--theme-elevation-100);
+  &[data-state="on"] {
+    background-color: var(--theme-elevation-500);
+    box-shadow: none;
+
+    &:hover {
+      background-color: var(--theme-elevation-500);
     }
-
-    .table-collapsible {
-      border-left: 1px solid var(--theme-elevation-100);
-    }
   }
+}
 
-  &:has([data-state="open"]) {
-    padding: 0 0 0 2.5rem;
-  }
-
+.collection-list {
   &__toggle {
     margin-bottom: var(--base);
     text-align: right;
@@ -26,8 +44,12 @@
 
   &__toggle-group {
     align-items: center;
-    display: flex;
-    gap: 0.5rem;
+    display: inline-flex;
+    gap: 6px;
+  }
+
+  &__toggle-group-item {
+    @extend %icon-button;
   }
 }
 
@@ -36,50 +58,98 @@
 }
 
 .table-collapsible {
-  tr {
-    background: transparent;
-    border-radius: 0;
+  &__row-child {
+    &:before,
+    &:after {
+      background: var(--theme-elevation-300);
+      content: "";
+      display: block;
+      left: -1rem;
+      position: absolute;
+    }
 
-    &.odd {
-      background: var(--theme-elevation-50);
-      border-radius: 3px;
+    &:before {
+      height: calc(100% + $gap);
+      top: -$gap;
+      width: 1px;
+    }
+
+    &:after {
+      height: 1px;
+      top: calc(50% - $gap);
+      width: 1rem;
+    }
+
+    &:not(.table-collapsible__row-last) + [data-state="open"] .table:before {
+      content: "";
+      display: block;
+      position: absolute;
+      height: calc(100% + $gap);
+      width: 1px;
+      background: var(--theme-elevation-300);
+      left: -1rem;
+      top: -$gap;
     }
   }
 
-  &__trigger,
-  &__toggle-group-item {
-    appearance: none;
-    align-items: center;
-    background-color: var(--theme-bg);
-    border: 0;
+  &__row-last:before {
+    height: calc(50% + 1px);
+  }
+
+  &__trigger {
+    @extend %icon-button;
+  }
+
+  &__header {
+    background: transparent !important;
+  }
+
+  [role="row"] {
+    background: var(--theme-elevation-50);
     border-radius: 3px;
-    box-shadow: 0 0 0 1px var(--theme-elevation-150);
-    color: var(--theme-text);
-    cursor: pointer;
-    display: flex;
-    height: var(--base);
-    justify-content: center;
-    outline: none;
-    padding: 2px;
-    position: relative;
-    transition-duration: .1s;
-    transition-property: box-shadow, background-color;
-    transition-timing-function: cubic-bezier(0,.2,.2,1);
-    width: var(--base);
-    z-index: 1;
-
-    &:hover {
-      background-color: var(--theme-elevation-100);
-      box-shadow: 0 0 0 1px var(--theme-elevation-500);
-    }
-
-    &[data-state="on"] {
-      background-color: var(--theme-elevation-500);
-      box-shadow: 0 0 0 1px var(--theme-elevation-500);
-
-      &:hover {
-        background-color: var(--theme-elevation-500);
-      }
-    }
   }
+}
+
+[role="table"] {
+  display: grid;
+  gap: $gap;
+  width: 100%;
+}
+
+[role="row"] {
+  display: grid;
+  position: relative;
+}
+
+[role="columnheader"],
+[role="cell"] {
+  display: block;
+  padding: 1rem 0.75rem;
+}
+
+[role="columnheader"] .sort-column {
+  color: var(--theme-elevation-400);
+}
+
+.cell-trigger {
+  align-items: center;
+  display: flex;
+}
+
+[data-state="open"] .table {
+  padding: $gap 0 0 2rem;
+  overflow: initial;
+  position: relative;
+}
+
+.sr-only {
+  border-width: 0;
+  clip: rect(0, 0, 0, 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
 }

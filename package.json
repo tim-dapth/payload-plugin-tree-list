@@ -1,6 +1,6 @@
 {
   "name": "payload-plugin-tree-list",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "type": "module",
   "description": "A plugin for Payload CMS that adds a collapsible Tree list view.",
   "main": "dist/index.js",
@@ -17,7 +17,7 @@
   "files": [
     "dist",
     "package.json",
-    "README",
+    "README.md",
     "LICENSE"
   ],
   "keywords": [

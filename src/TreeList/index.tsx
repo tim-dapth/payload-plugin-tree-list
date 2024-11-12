@@ -32,12 +32,13 @@ import {
 } from "@payloadcms/ui";
 import LinkImport from "next/link.js";
 import { isNumber } from "payload/shared";
-import { Fragment, useEffect, useState } from "react";
+import { Fragment, useEffect, useMemo, useState } from "react";
 import * as ToggleGroup from "@radix-ui/react-toggle-group";
 
 import { Table } from "../Table/index.js";
 import { TreeListIcon } from "../icons/TreeList/index.js";
 import { ListIcon } from "../icons/List/index.js";
+import { generateTreeList } from "../utils/generateTreeList.js";
 
 import "./index.scss";
 
@@ -88,7 +89,8 @@ export function TreeList() {
     breakpoints: { s: smallBreak },
   } = useWindowInfo();
 
-  let docs = data.docs;
+  const docs = data.docs;
+  const treeDocs = useMemo(() => generateTreeList(docs), [docs]);
 
   useEffect(() => {
     if (drawerDepth <= 1) {
@@ -146,17 +148,17 @@ export function TreeList() {
             >
               <ToggleGroup.Item
                 className={`${baseClass}__toggle-group-item`}
-                value="tree"
-                aria-label="Tree view"
-              >
-                <TreeListIcon />
-              </ToggleGroup.Item>
-              <ToggleGroup.Item
-                className={`${baseClass}__toggle-group-item`}
                 value="list"
                 aria-label="List view"
               >
                 <ListIcon />
+              </ToggleGroup.Item>
+              <ToggleGroup.Item
+                className={`${baseClass}__toggle-group-item`}
+                value="tree"
+                aria-label="Tree view"
+              >
+                <TreeListIcon />
               </ToggleGroup.Item>
             </ToggleGroup.Root>
           </div>
@@ -175,7 +177,7 @@ export function TreeList() {
                     collectionSlug,
                     uploadConfig: collectionConfig.upload,
                   }}
-                  data={docs}
+                  data={treeDocs}
                   fields={fields}
                 />
               ) : (

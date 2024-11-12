@@ -4,7 +4,7 @@ A plugin for [Payload CMS](https://github.com/payloadcms/payload) that adds a co
 
 This plugin is compatible only with Payload CMS version 3.x.
 
-![Payload Tree List Plugin Example with some items open and other closed](./images/payload-plugin-tree-list.png)
+![Payload Tree List Plugin Example with some items open and other closed](./images/payload-plugin-tree-list.gif)
 
 ## Installation / How to use
 
