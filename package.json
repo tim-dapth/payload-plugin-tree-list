@@ -1,6 +1,6 @@
 {
   "name": "payload-plugin-tree-list",
-  "version": "0.0.2",
+  "version": "0.0.3-beta.31",
   "type": "module",
   "description": "A plugin for Payload CMS that adds a collapsible Tree list view.",
   "main": "dist/index.js",
@@ -51,16 +51,17 @@
     }
   },
   "dependencies": {
-    "@payloadcms/ui": "beta",
+    "@payloadcms/next": "3.0.0",
+    "@payloadcms/ui": "3.0.0",
     "@radix-ui/react-collapsible": "1.1.1",
     "@radix-ui/react-toggle-group": "1.1.0",
-    "next": "15.0.0-canary.104",
-    "payload": "beta",
+    "next": "15.0.3",
+    "payload": "3.0.0",
     "react": "rc"
   },
   "devDependencies": {
     "@payloadcms/eslint-config": "1.1.1",
-    "@payloadcms/eslint-plugin": "3.0.0-beta.59",
+    "@payloadcms/eslint-plugin": "3.0.0",
     "@swc/cli": "0.5.0",
     "@swc/core": "1.9.1",
     "@types/react": "npm:types-react@19.0.0-rc.0",
@@ -68,11 +69,5 @@
     "copyfiles": "2.4.1",
     "prettier": "3.3.3",
     "typescript": "5.6.3"
-  },
-  "peerDependencies": {
-    "@payloadcms/next": "beta",
-    "next": "15.0.3",
-    "payload": "beta",
-    "react": "rc"
   }
 }
