@@ -25,9 +25,6 @@
     "skipLibCheck": true,
     "sourceMap": true,
     "strict": false,
-    "types": [
-      "node",
-    ],
     "incremental": true,
     "isolatedModules": true,
     "plugins": [
@@ -38,10 +35,7 @@
   },
   "composite": true,
   "include": [
-    "next-env.d.ts",
-    "**/*.ts",
-    "**/*.tsx",
-    ".next/types/**/*.ts"
+    "src/**/*",
   ],
   "exclude": [
     "node_modules",

@@ -31,3 +31,28 @@ export default buildConfig({
 
 ```
 
+## Testing locally
+
+This project use `pnpm` workspaces.
+Install all dependencies from root and build the plugin
+
+```sh
+pnpm i
+pnpm build
+```
+
+
+To start the postgres database and the development server, run the following commands:
+
+```sh
+cd dev
+cp .env.example .env
+sh scripts/database-init.sh
+pnpm dev
+```
+
+Access http://localhost:3000/admin
+
+The plugin is configured for `pages` collection
+
+

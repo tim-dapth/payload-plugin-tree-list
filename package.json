@@ -51,16 +51,16 @@
     }
   },
   "dependencies": {
-    "@payloadcms/ui": "beta",
+    "@payloadcms/ui": "3.0.1",
     "@radix-ui/react-collapsible": "1.1.1",
     "@radix-ui/react-toggle-group": "1.1.0",
-    "next": "15.0.0-canary.104",
-    "payload": "beta",
-    "react": "rc"
+    "next": "15.0.3",
+    "payload": "3.0.1",
+    "react": "19.0.0-rc-65a56d0e-20241020"
   },
   "devDependencies": {
     "@payloadcms/eslint-config": "1.1.1",
-    "@payloadcms/eslint-plugin": "3.0.0-beta.59",
+    "@payloadcms/eslint-plugin": "3.0.0",
     "@swc/cli": "0.5.0",
     "@swc/core": "1.9.1",
     "@types/react": "npm:types-react@19.0.0-rc.0",
@@ -70,9 +70,9 @@
     "typescript": "5.6.3"
   },
   "peerDependencies": {
-    "@payloadcms/next": "beta",
+    "@payloadcms/next": "3.0.1",
     "next": "15.0.3",
-    "payload": "beta",
-    "react": "rc"
+    "payload": "3.0.1",
+    "react": "19.0.0-rc-65a56d0e-20241020"
   }
 }
