@@ -112,10 +112,9 @@ export const Table: React.FC<Props> = ({ appearance, columns, data, isChildren =
                     style={gridRowClass}
                   >
                     {activeColumns.map((col, colIndex) => {
-                      console.log({ col, row });
                       return (
                         <div role="cell" className={`cell-${col.accessor}`} key={colIndex}>
-                          {/* {col.renderedCells[rowIndex]} */}Content
+                          {col.renderedCells[rowIndex]}
                         </div>
                       );
                     })}
