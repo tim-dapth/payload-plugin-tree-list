@@ -1,6 +1,6 @@
 # Payload Tree List Plugin
 
-**⚠️⚠️ WIP: not working since changes on beta.130, currently 3.0.0 ⚠️⚠️**
+**⚠️⚠️ WIP: not working since changes on beta.130, currently 3.X.X ⚠️⚠️**
 
 A plugin for [Payload CMS](https://github.com/payloadcms/payload) that adds a collapsible Tree list view. This plugin depends on the [Payload Nested Docs Plugin](https://github.com/payloadcms/payload/tree/beta/packages/plugin-nested-docs) for its parent implementation.
 
