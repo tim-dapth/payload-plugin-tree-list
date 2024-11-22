@@ -22,7 +22,7 @@ export const treeListPlugin =
               ...views,
               list: {
                 ...list,
-                Component: "payload-plugin-tree-list/client#TreeListView",
+                Component: "payload-plugin-tree-list/server#TreeListView",
               },
             },
           },

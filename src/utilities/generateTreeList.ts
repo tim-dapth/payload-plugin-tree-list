@@ -2,8 +2,8 @@ import { PaginatedDocs } from "payload";
 
 export function generateTreeList(docs?: PaginatedDocs["docs"]) {
   if (!docs || !docs.length) return [];
-  const docsById = docs.reduce((acc, doc) => {
-    acc[doc.id] = { ...doc, children: [] };
+  const docsById = docs.reduce((acc, doc, index) => {
+    acc[doc.id] = { ...doc, originalIndex: index, children: [] };
     return acc;
   }, {});
 
