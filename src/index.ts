@@ -1,9 +1,14 @@
 import type { Plugin } from "payload";
-import { TreeListPluginConfig } from "./types.js";
+
+type TreeListPluginConfig = {
+  collections: string[];
+  enabled?: boolean;
+};
 
 export const treeListPlugin =
-  ({ collections }: TreeListPluginConfig): Plugin =>
+  ({ collections, enabled = true }: TreeListPluginConfig): Plugin =>
   incomingConfig => {
+    if (!enabled) return incomingConfig;
     let config = { ...incomingConfig };
     config.collections = (config?.collections || []).map(collection => {
       if (!collections.includes(collection.slug)) return collection;

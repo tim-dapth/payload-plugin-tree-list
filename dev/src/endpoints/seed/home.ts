@@ -23,7 +23,6 @@ export const home: RequiredDataFromCollectionSlug<'pages'> = {
         },
       },
     ],
-    // @ts-ignore
     media: '{{IMAGE_1}}',
     richText: {
       root: {
@@ -92,7 +91,7 @@ export const home: RequiredDataFromCollectionSlug<'pages'> = {
                     format: 0,
                     mode: 'normal',
                     style: '',
-                    text: 'here',
+                    text: 'on our Github',
                     version: 1,
                   },
                 ],
@@ -100,7 +99,7 @@ export const home: RequiredDataFromCollectionSlug<'pages'> = {
                 fields: {
                   linkType: 'custom',
                   newTab: true,
-                  url: 'https://github.com/payloadcms/payload/tree/beta/templates/website',
+                  url: 'https://github.com/payloadcms/payload/tree/main/templates/website',
                 },
                 format: '',
                 indent: 0,
@@ -502,9 +501,7 @@ export const home: RequiredDataFromCollectionSlug<'pages'> = {
     {
       blockName: 'Media Block',
       blockType: 'mediaBlock',
-      // @ts-ignore
       media: '{{IMAGE_2}}',
-      position: 'default',
     },
     {
       blockName: 'Archive Block',
@@ -660,7 +657,6 @@ export const home: RequiredDataFromCollectionSlug<'pages'> = {
   ],
   meta: {
     description: 'An open-source website built with Payload and Next.js.',
-    // @ts-ignore
     image: '{{IMAGE_1}}',
     title: 'Payload Website Template',
   },
