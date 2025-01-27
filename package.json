@@ -10,7 +10,6 @@
     "name": "Italo Devoto Ramella",
     "url": "https://italodr.com"
   },
-  "private": true,
   "workspaces": [
     "./",
     "./dev"
