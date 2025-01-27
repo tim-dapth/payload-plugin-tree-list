@@ -33,12 +33,12 @@ export default buildConfig({
 
 ## Testing locally
 
-This project use `pnpm` workspaces.
+This project use `yarn` workspaces.
 Install all dependencies from root and build the plugin
 
 ```sh
-pnpm i
-pnpm build
+yarn i
+yarn build
 ```
 
 
@@ -48,8 +48,8 @@ To start the postgres database and the development server, run the following com
 cd dev
 cp .env.example .env
 sh start-database.sh
-pnpm generate:importmap
-pnpm dev
+yarn generate:importmap
+yarn dev
 ```
 
 Access http://localhost:3000/admin
