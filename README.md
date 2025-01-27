@@ -47,7 +47,8 @@ To start the postgres database and the development server, run the following com
 ```sh
 cd dev
 cp .env.example .env
-sh scripts/database-init.sh
+sh start-database.sh
+pnpm generate:importmap
 pnpm dev
 ```
 
