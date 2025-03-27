@@ -18,7 +18,6 @@
     "type": "git",
     "url": "https://github.com/dapth-tim/payload-plugin-tree-list.git"
   },
-
   "files": [
     "dist",
     "package.json",
@@ -70,8 +69,9 @@
     "@payloadcms/eslint-plugin": "3.9.0",
     "@swc/cli": "0.6.0",
     "@swc/core": "1.10.11",
-    "@types/react": "npm:types-react@19.0.0-alpha.3",
-    "@types/react-dom": "npm:types-react-dom@19.0.0-alpha.3",
+    "@types/node": "22.5.4",
+    "@types/react": "19.0.7",
+    "@types/react-dom": "19.0.3",
     "copyfiles": "2.4.1",
     "prettier": "3.4.2",
     "rimraf": "^5.0.5",

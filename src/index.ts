@@ -27,7 +27,7 @@ export const treeListPlugin =
               ...views,
               list: {
                 ...list,
-                Component: "payload-plugin-tree-list/server#TreeListView",
+                Component: "dapth-payload-plugin-tree-list/server#TreeListView",
               },
             },
           },
