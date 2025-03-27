@@ -1,5 +1,5 @@
 {
-  "name": "payload-plugin-tree-list-dev",
+  "name": "payload-plugin-tree-list",
   "version": "1.0.0",
   "description": "Website template for Payload",
   "license": "MIT",
@@ -16,6 +16,7 @@
     "start": "cross-env NODE_OPTIONS=--no-deprecation next start"
   },
   "dependencies": {
+    "@payloadcms/db-postgres": "latest",
     "@payloadcms/live-preview-react": "latest",
     "@payloadcms/next": "latest",
     "@payloadcms/payload-cloud": "latest",
@@ -33,6 +34,7 @@
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
     "cross-env": "^7.0.3",
+    "dapth-payload-plugin-tree-list": "workspace: *",
     "geist": "^1.3.0",
     "graphql": "^16.8.2",
     "lucide-react": "^0.378.0",
@@ -40,15 +42,13 @@
     "next-sitemap": "^4.2.3",
     "payload": "latest",
     "payload-admin-bar": "^1.0.6",
-    "payload-plugin-tree-list": "workspace: *",
     "prism-react-renderer": "^2.3.1",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-hook-form": "7.45.4",
     "sharp": "0.32.6",
     "tailwind-merge": "^2.3.0",
-    "tailwindcss-animate": "^1.0.7",
-    "@payloadcms/db-postgres": "latest"
+    "tailwindcss-animate": "^1.0.7"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3.2.0",
@@ -65,8 +65,5 @@
     "prettier": "^3.4.2",
     "tailwindcss": "^3.4.3",
     "typescript": "5.7.3"
-  },
-  "engines": {
-    "node": "^18.20.2 || >=20.9.0"
   }
 }
