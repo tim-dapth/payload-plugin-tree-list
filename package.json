@@ -1,6 +1,6 @@
 {
   "name": "dapth-payload-plugin-tree-list",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "type": "module",
   "description": "A plugin for Payload CMS that adds a collapsible Tree list view.",
   "main": "dist/index.js",
